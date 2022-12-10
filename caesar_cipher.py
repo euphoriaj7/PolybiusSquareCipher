@@ -1,6 +1,6 @@
 ########################################################################
 # Program:
-#    Lab 13: Create a cipher
+#    caesar_cipher: Create a cipher
 # Author:
 #    Br. Helfrich, Kyle Mueller
 # Summary:
