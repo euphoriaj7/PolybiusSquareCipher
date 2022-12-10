@@ -1,4 +1,4 @@
-# Lab 13 - Implement a cipher
+# Implement a cipher
 
 caesar_cipher.py - Contains code to run the cipher
 
