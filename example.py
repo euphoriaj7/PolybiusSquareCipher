@@ -19,7 +19,7 @@ class Example:
         self._value_maximum = '~'
         # size of alphabet used
         self._size_alphabet = ord(self._value_maximum) \
-                              - ord(self._value_minimum) + 1
+                            - ord(self._value_minimum) + 1
 
     def get_author(self):
         return "Brother Helfrich, adapted to Python by Kyle Mueller"

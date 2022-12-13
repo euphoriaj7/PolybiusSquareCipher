@@ -11,7 +11,7 @@ cipher.py - This is where you should implement your cipher
 
 1. Run the program with the example cipher to see how it works:
 
-    `python caesar_cipher.py`
+    `python polybius_square_cipher.py`
 
 2. Implement your cipher in cipher.py, filling in all the TODOs
 
