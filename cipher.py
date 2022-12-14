@@ -13,21 +13,22 @@
 # CIPHER
 ##############################################################################
 class Cipher:
-    def __init__(self):
-        # TODO: Insert anything you need for your cipher here
-        # self._minimum_value = '_'
-        # self._maximum_value = '^'
-        # self._alphabet_size = ord(self._maximum_value) \
-                            # -ord(self._minimum_value) + 1
-        # self.alphabet_index = [str(i//10 + 1) +str(i%10 +1) for i in range(len(self._alphabet_size))]
-        self.encrypt_dictionary = {}
-        self.decrypt_dictionary = {}
-        self.column = 10 
-        self.row = 10 
-        # print(alphabet_index)
-        # plaintext= ''
-        # ciphertext = ''
+    # def __init__(self):
+    #     # TODO: Insert anything you need for your cipher here
+    #     # self._minimum_value = '_'
+    #     # self._maximum_value = '^'
+    #     # self._alphabet_size = ord(self._maximum_value) \
+    #                         # -ord(self._minimum_value) + 1
+    #     # self.alphabet_index = [str(i//10 + 1) +str(i%10 +1) for i in range(len(self._alphabet_size))]
+    #     # print(alphabet_index)
+    #     # plaintext= ''
+    #     # ciphertext = ''
+    #     self.key
     def encrypt(self, plaintext, password):
+        column = 100 
+        row = 100 
+        max = 100
+        encrypt_dictionary = {}
         alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúóü"
         ascii_password = 0
         for letter in password: 
@@ -37,13 +38,40 @@ class Cipher:
         print(alphabet_size)
         print(starting_letter)
 
-        for row in range(0,self.row):
-            for col in range(0,self.column):
-            if self.current < max:
-                self.encrypt_dictionary[f"{r}{col}"] = alphabet
-        for letter in alphabet_size:
-            self.encrypt_dictionary[]
+        current = shift
 
+        for r in range(0,row):
+            if current < max:
+                encrypt_dictionary[alphabet_size[current]] = f"{r}"
+                shift += 1
+            elif current >= max:
+                encrypt_dictionary[alphabet_size[current - max]] = f"{r}"
+
+        for c in range(0,column):
+            if current < max:
+                encrypt_dictionary[alphabet_size[current]] = f"{c}"
+                shift += 1
+            elif current >= max:
+                encrypt_dictionary[alphabet_size[current - max]] = f"{c}"
+
+            current += 1
+        
+        print(encrypt_dictionary)
+
+        encryptedMessage = ''
+        for letter in plaintext:
+            encryptedMessage += f"{encrypt_dictionary[letter]}"
+        
+        print(encryptedMessage)
+
+    def decrypt(self, ciphertext, password):
+        decrypt_dictionary = {}
+        pass
+
+        # for letter in alphabet_size:
+        #     self.encrypt_dictionary[]
+
+                    # self.encrypt_dictionary[f"{row}{col}"] = alphabet_size[current]
         # i = ''
         # for l in range(len(plaintext[i])):
         #     if plaintext[i] in alphabet_index:
@@ -93,20 +121,20 @@ class Cipher:
             "http://practicalcryptography.com/ciphers/classical-era/polybius-square/"
         return s
 
-    # ##########################################################################
-    # # GET PSEUDOCODE
-    # # Returns the pseudocode as a string to be used by the caller
-    # ##########################################################################
-    # def get_pseudocode(self):
-    #     # TODO: This function should return your psuedocode, neatly formatted
+    ##########################################################################
+    # GET PSEUDOCODE
+    # Returns the pseudocode as a string to be used by the caller
+    ##########################################################################
+    def get_pseudocode(self):
+        # TODO: This function should return your psuedocode, neatly formatted
 
-    #     # The encrypt pseudocode
-    #     pc = "insert the encryption pseudocode\n"
+        # The encrypt pseudocode
+        pc = "insert the encryption pseudocode\n"
 
-    #     # The decrypt pseudocode
-    #     pc += "insert the decryption pseudocode\n"
+        # The decrypt pseudocode
+        pc += "insert the decryption pseudocode\n"
 
-    #     return pc
+        return pc
 
     ##########################################################################
     # ENCRYPT
@@ -151,44 +179,44 @@ class Cipher:
 
     #     return ciphertext
 
-    ##########################################################################
-    # DECRYPT
-    # TODO: ADD description
-    ##########################################################################
-    def decrypt(self, ciphertext, password):
-        plaintext = ciphertext
-        # TODO - Add your code here
+    # ##########################################################################
+    # # DECRYPT
+    # # TODO: ADD description
+    # ##########################################################################
+    # def decrypt(self, ciphertext, password):
+    #     plaintext = ciphertext
+    #     # TODO - Add your code here
 
-        # Trial code done here
+    #     # Trial code done here
 
-    #     password = input("Please enter your password: ")
-    # if password == "":
-    #     password = "P@55w0rd!"
-    #     print(f"Default password: {password}") 
+    # #     password = input("Please enter your password: ")
+    # # if password == "":
+    # #     password = "P@55w0rd!"
+    # #     print(f"Default password: {password}") 
 
-        # working code
-        plaintext = ""
+    #     # working code
+    #     plaintext = ""
         
-        # find a Caesar password from a textual password
-        offset_key = self._offset_from_password(password)
-        assert offset_key >= 0 and offset_key < self._size_alphabet
+    #     # find a Caesar password from a textual password
+    #     offset_key = self._offset_from_password(password)
+    #     assert offset_key >= 0 and offset_key < self._size_alphabet
 
-        # make the offset backwards
-        offset_key = self._size_alphabet - offset_key
-        assert offset_key >= 0 and offset_key < self._size_alphabet
+    #     # make the offset backwards
+    #     offset_key = self._size_alphabet - offset_key
+    #     assert offset_key >= 0 and offset_key < self._size_alphabet
 
-        # convert the ciphertext one character at a time
-        for p in ciphertext:
-            # convert the character into an index we can work with
-            index_from_character = self._index_from_character(p)
+    #     # convert the ciphertext one character at a time
+    #     for p in ciphertext:
+    #         # convert the character into an index we can work with
+    #         index_from_character = self._index_from_character(p)
             
-            # perform the shift
-            index_from_character += offset_key
+    #         # perform the shift
+    #         index_from_character += offset_key
 
-            # make sure it is within range
-            index_from_character %= self._size_alphabet
-            assert index_from_character >= 0 and index_from_character < self._size_alphabet
+    #         # make sure it is within range
+    #         index_from_character %= self._size_alphabet
+    #         assert index_from_character >= 0 and index_from_character < self._size_alphabet
 
-            # send the index into the ciphertext
-            plaintext += self._character_from_index(index_from_character)
-        return plaintext
+    #         # send the index into the ciphertext
+    #         plaintext += self._character_from_index(index_from_character)
+    #     return plaintext
