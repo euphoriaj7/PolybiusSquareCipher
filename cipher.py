@@ -29,7 +29,7 @@ class Cipher:
         row = 100 
         max = 100
         encrypt_dictionary = {}
-        decrypt_dictionary = {}
+        # decrypt_dictionary = {}
         # ü
         alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
         ascii_password = 0
@@ -45,20 +45,20 @@ class Cipher:
         for r in range(0,row):
             if current < max:
                 encrypt_dictionary[alphabet_size[current]] = f"{r}"
-                decrypt_dictionary[f"{r}"] = alphabet_size[current] 
+                # decrypt_dictionary[f"{r}"] = alphabet_size[current] 
                 shift += 1
             elif current >= max:
                 encrypt_dictionary[alphabet_size[current - max]] = f"{r}"
-                decrypt_dictionary[f"{r}"] = alphabet_size[current - max]
+                # decrypt_dictionary[f"{r}"] = alphabet_size[current - max]
 
         for c in range(0,column):
             if current < max:
                 encrypt_dictionary[alphabet_size[current]] = f"{c}"
-                decrypt_dictionary[f"{c}"] = alphabet_size[current]
+                # decrypt_dictionary[f"{c}"] = alphabet_size[current]
                 shift += 1
             elif current >= max:
                 encrypt_dictionary[alphabet_size[current - max]] = f"{c}"
-                decrypt_dictionary[f"{c}"] = alphabet_size[current - max] 
+                # decrypt_dictionary[f"{c}"] = alphabet_size[current - max] 
 
             current += 1
             
@@ -107,7 +107,7 @@ class Cipher:
         print(decrypt_dictionary)
 
         decrypted = ''
-        for letter in encrypted:
+        for letter in zip(encrypted):
             decrypted += f"{decrypt_dictionary[letter]}"
         
         return decrypted
