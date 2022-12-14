@@ -29,7 +29,7 @@ class Cipher:
         row = 10
         max = 100
         encrypt_dictionary = {}
-        decrypt_dictionary = {}
+        # decrypt_dictionary = {}
         # ü
         alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
         ascii_password = 0
@@ -46,11 +46,11 @@ class Cipher:
             for c in range(0,column):   
                 if current < max:
                     encrypt_dictionary[alphabet_size[current]] = f"{r}{c}"
-                    decrypt_dictionary[f"{r}{c}"] = alphabet_size[current] 
+                    # decrypt_dictionary[f"{r}{c}"] = alphabet_size[current] 
                     shift += 1
                 elif current >= max:
                     encrypt_dictionary[alphabet_size[current - max]] = f"{r}{c}"
-                    decrypt_dictionary[f"{r}{c}"] = alphabet_size[current - max]
+                    # decrypt_dictionary[f"{r}{c}"] = alphabet_size[current - max]
 
                 current += 1
             
@@ -70,7 +70,7 @@ class Cipher:
         column = 10 
         row = 10 
         max = 100
-        encrypt_dictionary = {}
+        # encrypt_dictionary = {}
         decrypt_dictionary = {}
         # ü
         alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
@@ -87,11 +87,11 @@ class Cipher:
         for r in range(0,row):
             for c in range(0,column):   
                 if current < max:
-                    encrypt_dictionary[alphabet_size[current]] = f"{r}{c}"
+                    # encrypt_dictionary[alphabet_size[current]] = f"{r}{c}"
                     decrypt_dictionary[f"{r}{c}"] = alphabet_size[current] 
                     shift += 1
                 elif current >= max:
-                    encrypt_dictionary[alphabet_size[current - max]] = f"{r}{c}"
+                    # encrypt_dictionary[alphabet_size[current - max]] = f"{r}{c}"
                     decrypt_dictionary[f"{r}{c}"] = alphabet_size[current - max]
 
                 current += 1
