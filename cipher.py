@@ -105,10 +105,74 @@ class Cipher:
         # TODO: This function should return your psuedocode, neatly formatted
 
         # The encrypt pseudocode
-        pc = "insert the encryption pseudocode\n"
+        pc = "below is the encryption pseudocode\n"\
+            " \n"\
+            "columns = 5\n"\
+            "rows = 5\n"\
+            "max = 25\n"\
+            "start = 5\n"\
+            "current = start\n"\
+            " \n"\
+            "for letter in password:\n"\
+            "  start += ord(letter) % 25\n"\
+            " \n"\
+            "encryption = {}\n"\
+            "alphabet = 'abcdefghijklmnopqrstuvwxy'\n"\
+            " \n"\
+            "for r in range(0,rows):\n"\
+            "  for col in range(0,columns):\n"\
+            "    # print(col)\n"\
+            "    if current < max:\n"\
+            "      encryption[alphabet[current]] = f'{r}{col}'\n"\
+            "      start += 1\n"\
+            "    elif current > max:\n"\
+            "      encryption[alphabet[current - max]] = f'{r}{col}'\n"\
+            " \n"\
+            "    current += 1\n"\
+            " \n"\
+            "print(encryption)\n"\
+            " \n"\
+            "encryptedMessage = ''\n"\
+            "for letter in plaintext:\n"\
+            "  encryptedMessage += f'{encryption[letter]} '\n"\
+            " \n"\
+            "print(encryptedMessage)\n"\
+            "return ciphertext\n"\
 
         # The decrypt pseudocode
-        pc += "insert the decryption pseudocode\n"
+        pc += "below is the decryption pseudocode\n"\
+            " \n"\
+            "columns = 5\n"\
+            "rows = 5\n"\
+            "max = 25\n"\
+            "start = 5\n"\
+            "current = start\n"\
+            " \n"\
+            "for letter in password:\n"\
+            "  start += ord(letter) % 25\n"\
+            " \n"\
+            "decryption = {}\n"\
+            "alphabet = 'abcdefghijklmnopqrstuvwxy'\n"\
+            " \n"\
+            "for r in range(0,rows):\n"\
+            "  for col in range(0,columns):\n"\
+            "    # print(col)\n"\
+            "    if current < max:\n"\
+            "      decryption[f'{r}{col}'] = alphabet[current]\n"\
+            "      start += 1\n"\
+            "    elif current > max:\n"\
+            "      decryption[f'r}{col}'] = alphabet[current - max]\n"\
+            " \n"\
+            "    current += 1\n"\
+            " \n"\
+            "print(decryption)\n"\
+            "decryptedMessage = ''\n"\
+            " \n"\
+            "for letter in ciphertext:\n"\
+            "  decryptedMessage += f'{decryption[letter]}'\n"\
+            " \n"\
+            "print(encryptedMessage)\n"\
+            "return plaintext\n"\
 
         return pc
     
