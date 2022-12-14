@@ -1,14 +1,14 @@
 ########################################################################
 # Program:
-#    caesar_cipher: Create a cipher
+#    polybius_square_cipher: Create a cipher
 # Author:
-#    Br. Helfrich, Kyle Mueller
+#    Jeff Pitcher
 # Summary:
 #    This program will be able to encrypt and decrypt text using a
 #    cipher.
 ########################################################################
 
-import example
+# import example
 import cipher
 
 #############################################################

@@ -13,48 +13,31 @@
 # CIPHER
 ##############################################################################
 class Cipher:
-    # def __init__(self):
     #     # TODO: Insert anything you need for your cipher here
-    #     # self._minimum_value = '_'
-    #     # self._maximum_value = '^'
-    #     # self._alphabet_size = ord(self._maximum_value) \
-    #                         # -ord(self._minimum_value) + 1
-    #     # self.alphabet_index = [str(i//10 + 1) +str(i%10 +1) for i in range(len(self._alphabet_size))]
-    #     # print(alphabet_index)
-    #     # plaintext= ''
-    #     # ciphertext = ''
-    #     self.key
     def encrypt(self, plaintext, password):
         column = 10
         row = 10
         max = 100
         encrypt_dictionary = {}
-        # decrypt_dictionary = {}
         # ü
-        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
+        #ó
+        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\\|{}[]:;',./<>?ñáéíú\" "
         ascii_password = 0
+
         for letter in password: 
             ascii_password = ord(letter) + ascii_password
         shift = ascii_password % 100
         starting_letter = alphabet_size[shift]   
-        # print(alphabet_size)
-        # print(starting_letter)
-
         current = shift
 
         for r in range(0,row):
             for c in range(0,column):   
                 if current < max:
                     encrypt_dictionary[alphabet_size[current]] = f"{r}{c}"
-                    # decrypt_dictionary[f"{r}{c}"] = alphabet_size[current] 
                     shift += 1
                 elif current >= max:
                     encrypt_dictionary[alphabet_size[current - max]] = f"{r}{c}"
-                    # decrypt_dictionary[f"{r}{c}"] = alphabet_size[current - max]
-
                 current += 1
-            
-        print(encrypt_dictionary)
 
         encrypted = ''
         encrypted_with_commas= ''
@@ -62,18 +45,20 @@ class Cipher:
             encrypted += f"{encrypt_dictionary[letter]}"
         for letter in plaintext:
             encrypted_with_commas += f"{encrypt_dictionary[letter]},"
-                
-        print(encrypted)
-        return encrypted and encrypted_with_commas
+        encrypted_with_commas = encrypted_with_commas[:-1]
 
-    def decrypt(self, encrypted_with_commas, password):
+        print(encrypted_with_commas)
+        return encrypted_with_commas 
+
+    def decrypt(self, ciphertext, password):
+        encrypted_list = ciphertext.split(',')
         column = 10 
         row = 10 
         max = 100
         # encrypt_dictionary = {}
         decrypt_dictionary = {}
         # ü
-        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
+        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\\|{}[]:;',./<>?ñáéíú\" "
         ascii_password = 0
         for letter in password: 
             ascii_password = ord(letter) + ascii_password
@@ -99,11 +84,12 @@ class Cipher:
         print(decrypt_dictionary)
 
         decrypted = ''
-        for letter in encrypted_with_commas:
-            if letter == ',':
-                pass
-            else:
-                decrypted += f"{decrypt_dictionary[letter]}"
+        for letter in encrypted_list:
+            # if letter == ',':
+            #     pass
+            # else:
+            print(letter)
+            decrypted += f"{decrypt_dictionary[letter]}"
         
         return decrypted
 
