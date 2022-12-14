@@ -37,6 +37,10 @@ class Cipher:
         print(alphabet_size)
         print(starting_letter)
 
+        for row in range(0,self.row):
+            for col in range(0,self.column):
+            if self.current < max:
+                self.encrypt_dictionary[f"{r}{col}"] = alphabet
         for letter in alphabet_size:
             self.encrypt_dictionary[]
 
