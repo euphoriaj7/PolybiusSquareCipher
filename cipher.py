@@ -29,6 +29,7 @@ class Cipher:
         row = 100 
         max = 100
         encrypt_dictionary = {}
+        decrypt_dictionary = {}
         # ü
         alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
         ascii_password = 0
@@ -36,40 +37,80 @@ class Cipher:
             ascii_password = ord(letter) + ascii_password
         shift = ascii_password % 100
         starting_letter = alphabet_size[shift]   
-        print(alphabet_size)
-        print(starting_letter)
+        # print(alphabet_size)
+        # print(starting_letter)
 
         current = shift
 
         for r in range(0,row):
             if current < max:
                 encrypt_dictionary[alphabet_size[current]] = f"{r}"
+                decrypt_dictionary[f"{r}"] = alphabet_size[current] 
                 shift += 1
             elif current >= max:
                 encrypt_dictionary[alphabet_size[current - max]] = f"{r}"
+                decrypt_dictionary[f"{r}"] = alphabet_size[current - max]
 
         for c in range(0,column):
             if current < max:
                 encrypt_dictionary[alphabet_size[current]] = f"{c}"
+                decrypt_dictionary[f"{c}"] = alphabet_size[current]
                 shift += 1
             elif current >= max:
                 encrypt_dictionary[alphabet_size[current - max]] = f"{c}"
+                decrypt_dictionary[f"{c}"] = alphabet_size[current - max] 
 
             current += 1
-        
+            
         print(encrypt_dictionary)
 
         encrypted = ''
         for letter in plaintext:
-            # if letter.isalpha():
-                # encrypted += letter
             encrypted += f"{encrypt_dictionary[letter]}"
         
         return encrypted
 
-    def decrypt(self, ciphertext, password):
+    def decrypt(self, encrypted, password):
+        column = 100 
+        row = 100 
+        max = 100
         decrypt_dictionary = {}
-        pass
+        # ü
+        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
+        ascii_password = 0
+        for letter in password: 
+            ascii_password = ord(letter) + ascii_password
+        shift = ascii_password % 100
+        starting_letter = alphabet_size[shift]   
+        # print(alphabet_size)
+        print(starting_letter)
+
+        current = shift
+
+        for c in range(0,column):
+            if current < max:
+                decrypt_dictionary[f"{c}"] = alphabet_size[current]
+                shift += 1
+            elif current >= max:
+                decrypt_dictionary[f"{c}"] = alphabet_size[current - max] 
+                
+        for r in range(0,row):
+            if current < max:
+                decrypt_dictionary[f"{r}"] = alphabet_size[current] 
+                shift += 1
+            elif current >= max:
+                decrypt_dictionary[f"{r}"] = alphabet_size[current - max]
+
+
+            current += 1
+        
+        print(decrypt_dictionary)
+
+        decrypted = ''
+        for letter in encrypted:
+            decrypted += f"{decrypt_dictionary[letter]}"
+        
+        return decrypted
 
         # for letter in alphabet_size:
         #     self.encrypt_dictionary[]
