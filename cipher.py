@@ -29,7 +29,8 @@ class Cipher:
         row = 100 
         max = 100
         encrypt_dictionary = {}
-        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúóü"
+        # ü
+        alphabet_size = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=`~!@#$%^&*()_+\|{}[]:;',./<>?ñáéíúó "
         ascii_password = 0
         for letter in password: 
             ascii_password = ord(letter) + ascii_password
@@ -58,11 +59,13 @@ class Cipher:
         
         print(encrypt_dictionary)
 
-        encryptedMessage = ''
+        encrypted = ''
         for letter in plaintext:
-            encryptedMessage += f"{encrypt_dictionary[letter]}"
+            # if letter.isalpha():
+                # encrypted += letter
+            encrypted += f"{encrypt_dictionary[letter]}"
         
-        print(encryptedMessage)
+        return encrypted
 
     def decrypt(self, ciphertext, password):
         decrypt_dictionary = {}
